@@ -86,26 +86,16 @@ const finances = [
 ['Jan-2017', 138230],
 ['Feb-2017', 671099]
 ];
-
 // Setting console display text color to red.
 function colorMsg(msg, color) {
     console.log("%c" + msg, "color:" + color);
 }
-
-colorMsg('Financial Analysis' + '\n' + '----------------------------', '#b03634');
-console.log('Total Months: ' + finances.length);
-
 // The net total amount of Profit/Losses over the entire period.
-
 let netProfitLoss = 0;
 for (const [date, profitLoss] of finances) {
     netProfitLoss += profitLoss;
 }
-
-console.log('Total: $' + netProfitLoss);
-
 // The average of the changes in Profit/Losses over the entire period.
-
 let profitLossChanges = 0;
 for (let i = 1; i < finances.length; i++) {
     const [date, profitLoss] = finances[i];
@@ -113,10 +103,7 @@ for (let i = 1; i < finances.length; i++) {
     profitLossChanges += profitLoss - prevProfitLoss;
 }
 const averageChange = profitLossChanges / (finances.length - 1);
-console.log('Average Change: $' + averageChange.toFixed(2));
-
 // The greatest decrease in losses (date and amount) over the entire period.
-
 let greatestDecrease = 0;
 let monthOfGreatestDecrease = '';
 for (let i = 1; i < finances.length; i++) {
@@ -127,5 +114,9 @@ for (let i = 1; i < finances.length; i++) {
         greatestDecrease = change;
         monthOfGreatestDecrease = month;}
 }
-
+// Displaying results via the console.
+colorMsg('Financial Analysis' + '\n' + '----------------------------', '#b03634');
+console.log('Total Months: ' + finances.length);
+console.log('Total: $' + netProfitLoss);
+console.log('Average Change: $' + averageChange.toFixed(2));
 console.log(`${'Greatest Decrease in Profits: ' + monthOfGreatestDecrease} ($${greatestDecrease})`);
