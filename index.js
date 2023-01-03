@@ -115,3 +115,17 @@ for (let i = 1; i < finances.length; i++) {
 const averageChange = profitLossChanges / (finances.length - 1);
 console.log('Average Change: $' + averageChange.toFixed(2));
 
+// The greatest decrease in losses (date and amount) over the entire period.
+
+let greatestDecrease = 0;
+let monthOfGreatestDecrease = '';
+for (let i = 1; i < finances.length; i++) {
+    const [month, profitLoss] = finances[i];
+    const [prevMonth, prevProfitLoss] = finances[i - 1];
+    const change = profitLoss - prevProfitLoss;
+    if (change < greatestDecrease) {
+        greatestDecrease = change;
+        monthOfGreatestDecrease = month;}
+}
+
+console.log(`${'Greatest Decrease in Profits: ' + monthOfGreatestDecrease} ($${greatestDecrease})`);
