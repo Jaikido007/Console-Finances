@@ -87,22 +87,19 @@ const finances = [
 ['Feb-2017', 671099]
 ];
 
+// Setting console display text color to red.
 function colorMsg(msg, color) {
     console.log("%c" + msg, "color:" + color);
 }
 
-// The total number of months included in the dataset.
-colorMsg('Financial Analysis' + '\n' + '----------------------------', 'red');
+colorMsg('Financial Analysis' + '\n' + '----------------------------', '#b03634');
 console.log('Total Months: ' + finances.length);
 
 // The net total amount of Profit/Losses over the entire period.
 
-// The average of the changes in Profit/Losses over the entire period.
+let netProfitLoss = 0;
+for (const [date, profitLoss] of finances) {
+    netProfitLoss += profitLoss;
+}
 
-// You will need to track what the total change in profits is from month to month and then find the average.
-
-// (Total/Number of months)
-
-// The greatest increase in profits (date and amount) over the entire period.
-
-// The greatest decrease in losses (date and amount) over the entire period.
+console.log('Total: $' + netProfitLoss);
