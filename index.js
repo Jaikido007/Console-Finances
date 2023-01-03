@@ -103,20 +103,33 @@ for (let i = 1; i < finances.length; i++) {
     profitLossChanges += profitLoss - prevProfitLoss;
 }
 const averageChange = profitLossChanges / (finances.length - 1);
+// The greatest increase in profits (date and amount) over the entire period.
+let greatestIncrease = 0;
+let dateOfGreatestIncrease = '';
+for (let i = 1; i < finances.length; i++) {
+    const [date, profitLoss] = finances[i];
+    const [prevDate, prevProfitLoss] = finances[i - 1];
+    const change = profitLoss - prevProfitLoss;
+    if (change > greatestIncrease) {
+        greatestIncrease = change;
+        dateOfGreatestIncrease = date;}
+}
+
 // The greatest decrease in losses (date and amount) over the entire period.
 let greatestDecrease = 0;
-let monthOfGreatestDecrease = '';
+let dateOfGreatestDecrease = '';
 for (let i = 1; i < finances.length; i++) {
     const [month, profitLoss] = finances[i];
     const [prevMonth, prevProfitLoss] = finances[i - 1];
     const change = profitLoss - prevProfitLoss;
     if (change < greatestDecrease) {
         greatestDecrease = change;
-        monthOfGreatestDecrease = month;}
+        dateOfGreatestDecrease = month;}
 }
 // Displaying results via the console.
 colorMsg('Financial Analysis' + '\n' + '----------------------------', '#b03634');
 console.log('Total Months: ' + finances.length);
 console.log('Total: $' + netProfitLoss);
 console.log('Average Change: $' + averageChange.toFixed(2));
-console.log(`${'Greatest Decrease in Profits: ' + monthOfGreatestDecrease} ($${greatestDecrease})`);
+console.log(`${'Greatest Increase in Profits: ' + dateOfGreatestIncrease} ($${greatestIncrease})`);
+console.log(`${'Greatest Decrease in Profits: ' + dateOfGreatestDecrease} ($${greatestDecrease})`);
