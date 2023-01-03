@@ -27,3 +27,7 @@ N/A
 Please refer to the LICENSE in the repo.
 
 ## Screenshots
+
+https://user-images.githubusercontent.com/81382978/210397754-a60013c3-a7fa-4add-82c1-c3663b9d679b.png
+
+https://user-images.githubusercontent.com/81382978/210397757-c3489d39-7e79-41ee-a903-6be0ae4e86c5.png
