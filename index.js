@@ -103,3 +103,15 @@ for (const [date, profitLoss] of finances) {
 }
 
 console.log('Total: $' + netProfitLoss);
+
+// The average of the changes in Profit/Losses over the entire period.
+
+let profitLossChanges = 0;
+for (let i = 1; i < finances.length; i++) {
+    const [date, profitLoss] = finances[i];
+    const [prevDate, prevProfitLoss] = finances[i - 1];
+    profitLossChanges += profitLoss - prevProfitLoss;
+}
+const averageChange = profitLossChanges / (finances.length - 1);
+console.log('Average Change: $' + averageChange.toFixed(2));
+
